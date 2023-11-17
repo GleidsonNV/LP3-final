@@ -133,7 +133,7 @@ public class Menu {
 		System.out.print("\nInforme a especialidade da consulta:");
 		String especialidade = scanner.next();
 		if(cf.VerificaSeClinicaAtendeEspecialidade(especialidade)) {
-			if(paciente.getPlano().equals(null)) {
+			if(paciente.getPlano() == null) {
 				System.out.print("Paciente não possui um plano parceiro da clinica");
 				System.out.print("Continuar com a marcação da consulta particular? S/N");
 				String keep = scanner.next();
