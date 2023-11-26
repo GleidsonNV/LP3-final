@@ -1,5 +1,7 @@
 package clinica;
 
+import clinica.strategies.PagamentoStrategy;
+
 public class Paciente {
 	
 	private int id;
@@ -9,6 +11,7 @@ public class Paciente {
 	private String data_de_nascimento;
 	private String sexo;
 	private Plano plano;
+	private PagamentoStrategy pagamento;
 	private Responsavel responsavel;
 	
 	public Paciente (String nome, String data_de_nascimento, String cpf, String rg, String sexo, Plano plano) {
@@ -89,4 +92,11 @@ public class Paciente {
 		this.sexo = sexo;
 	}
 
+	public PagamentoStrategy getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(PagamentoStrategy pagamento) {
+		this.pagamento = pagamento;
+	}
 }

@@ -5,13 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f506931f-4ea0-4a05-9f0a-9b74eec3160b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clinica/strategies/PagamentoStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clinica/strategies/impl/PagamentoComCobertura.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clinica/strategies/impl/PagamentoSemCobertura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clinica/ClinicaFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clinica/ClinicaFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/clinica/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clinica/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clinica/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clinica/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clinica/Plano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clinica/Plano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/clinica/Seeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/clinica/Seeder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -22,13 +37,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Arquivos/requestExample/requestExample&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/Arquivos/requestExample/requestExample"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -38,6 +54,43 @@
       <option name="presentableId" value="Default" />
       <updated>1698465491280</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fix: paciente sem plano">
+      <option name="closed" value="true" />
+      <created>1700184954660</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700184954660</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix: paciente sem plano" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: paciente sem plano" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/clinica/strategies/impl/PagamentoComCobertura.java</url>
+          <line>19</line>
+          <properties class="clinica.strategies.impl.PagamentoComCobertura" method="pagar">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/clinica/Menu.java</url>
+          <line>132</line>
+          <properties class="clinica.Menu" method="marcarConsulta">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

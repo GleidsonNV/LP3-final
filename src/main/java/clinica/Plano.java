@@ -1,12 +1,14 @@
 package clinica;
 
+import clinica.strategies.PagamentoStrategy;
+
 public class Plano {
 	
 	private int id;
 	private String nome;
 	private TabelaEspecialidades tabela_especialidades;
 	private int cobertura;
-	
+
 	public Plano(String nome, int cobertura) {
 		Id gerador = Id.getInstance();
         this.id = gerador.gerarId("");
@@ -41,5 +43,6 @@ public class Plano {
 	public void setCobertura(int cobertura) {
 		this.cobertura = cobertura;
 	}
+
 
 }

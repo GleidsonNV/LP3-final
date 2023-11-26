@@ -1,5 +1,8 @@
 package clinica;
 
+import clinica.strategies.impl.PagamentoComCobertura;
+import clinica.strategies.impl.PagamentoSemCobertura;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +18,7 @@ public class Menu {
 
 	public static void main(String[] args) {
 		
-		Seeder sd = new Seeder();
-		sd.seed();
+		Seeder.seed();
 		ClinicaFacade cf = new ClinicaFacade();
 		Scanner scanner = new Scanner(System.in);
 		int opcao = 0;
@@ -56,16 +58,16 @@ public class Menu {
 		System.out.print("\nInforme os dados abaixo:");
 		System.out.print("\nNome: ");
 		String nome = scanner.next();
-		System.out.print("Digite a data de nascimento (dd/mm/aaaa):");
+		System.out.print("Digite a data de nascimento (dd/mm/aaaa): ");
 		String dataNascimento = scanner.next();
 		int idade = calcularIdade(dataNascimento);
 		System.out.print("CPF: ");
 		String cpf = scanner.next();
 		System.out.print("RG: ");
 		String rg = scanner.next();
-		System.out.print("Sexo: M/F");
+		System.out.print("Sexo: M/F ");
 		String sexo = scanner.next();
-		System.out.print("O paciente possui um plano? digite o nome, se não possuir digite 0");
+		System.out.print("O paciente possui um plano? digite o nome, se não possuir digite 0 ");
 		String plano = scanner.next();
 		Plano pacientePlano = (Plano) bd.select(Plano.class, plano);
 		Paciente paciente = new Paciente(nome, dataNascimento, cpf, rg, sexo, pacientePlano);
@@ -130,29 +132,31 @@ public class Menu {
 
 	public static void marcarConsulta(Scanner scanner, Paciente paciente) {
 		Boolean consultaPorPlano = true;
-		System.out.print("\nInforme a especialidade da consulta:");
+		System.out.print("\nInforme a especialidade da consulta: ");
 		String especialidade = scanner.next();
 		if(cf.VerificaSeClinicaAtendeEspecialidade(especialidade)) {
 			if(paciente.getPlano() == null) {
 				System.out.print("Paciente não possui um plano parceiro da clinica");
-				System.out.print("Continuar com a marcação da consulta particular? S/N");
+				System.out.print("Continuar com a marcação da consulta particular? S/N ");
 				String keep = scanner.next();
 				if(keep.equals("S")) {
-					consultaPorPlano = false;
+					TabelaEspecialidades tabela = (TabelaEspecialidades) bd.selectIndex(TabelaEspecialidades.class, 0);
+					paciente.setPagamento(new PagamentoSemCobertura(especialidade));
 				}else {
 					return;
 				}
 			}else {
 				if(!(cf.VerificaSePlanoAtendeEspecialidade(paciente.getPlano(), especialidade))) {
 					System.out.print("O plano do paciente não cobre essa especialidade");
-					System.out.print("Continuar com a marcação da consulta particular? S/N");
+					System.out.print("Continuar com a marcação da consulta particular? S/N ");
 					String keep = scanner.next();
-					if(keep.equals("S")) {
-						consultaPorPlano = false;
+					if(keep.equalsIgnoreCase("S")) {
+						paciente.setPagamento(new PagamentoSemCobertura(especialidade));
 					}else {
 						return;
 					}
-				}
+				}else paciente.setPagamento(new PagamentoComCobertura(paciente.getPlano().getTabela_especialidades(), especialidade, paciente.getPlano()));
+
 			}
 			Medico medico = cf.VerificaMedicoDaEspecialidade(especialidade);
 			System.out.print("O(a) médico(a) que faz a consulta para essa especialidade é:"+medico.getNome()+"\n" );
@@ -162,14 +166,14 @@ public class Menu {
 			do {
 			System.out.print("\nDigite a data da consulta\n");
 			String data = scanner.next();
-			System.out.print("Digite a hora da consulta");
+			System.out.print("Digite a hora da consulta ");
 			String hora = scanner.next();
 			dataValida = agenda.verificiarDisponibilidade(data, hora, medico);
 			if(dataValida) {
-				double valor = cf.CalcularValorFatura(paciente.getPlano(), especialidade, consultaPorPlano);
+				double valor = cf.CalcularValorFatura(paciente, especialidade, consultaPorPlano);
 				System.out.print("Voce ira pagar "+valor+" na consulta, continuar? S/N");
 				String keep = scanner.next();
-				if(keep.equals("N")) {
+				if(keep.equalsIgnoreCase("N")) {
 					return;
 				}
 				

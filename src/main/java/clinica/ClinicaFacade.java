@@ -39,15 +39,17 @@ public class ClinicaFacade {
 		return false;
 	}
 	
-	public double CalcularValorFatura(Plano plano, String especialidade, boolean consultaPorPlano) {
-		if(consultaPorPlano) {
-			TabelaEspecialidades tabela = plano.getTabela_especialidades();
-			 double valorCoberto = tabela.getEspecialidades().get(especialidade) - (plano.getCobertura() / 100.0) * tabela.getEspecialidades().get(especialidade);
-		     return valorCoberto;
-		}else {
-			TabelaEspecialidades tabela = (TabelaEspecialidades) bd.selectIndex(TabelaEspecialidades.class, 0);
-			return tabela.getEspecialidades().get(especialidade);
-		}
+	public double CalcularValorFatura(Paciente paciente, String especialidade, boolean consultaPorPlano) {
+		double valorCalculado = paciente.getPagamento().pagar();
+//		if(consultaPorPlano) {
+//			TabelaEspecialidades tabela = paciente.getPlano().getTabela_especialidades();
+//			 valorCalculado = paciente.getPagamento().pagar();
+//		     return valorCalculado;
+//		}else {
+//			TabelaEspecialidades tabela = (TabelaEspecialidades) bd.selectIndex(TabelaEspecialidades.class, 0);
+//			return tabela.getEspecialidades().get(especialidade);
+//		}
+		return valorCalculado;
     }
 
 	public boolean VerificaSePlanoAtendeEspecialidade(Plano plano, String especialidade) {

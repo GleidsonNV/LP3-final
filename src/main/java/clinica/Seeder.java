@@ -1,5 +1,7 @@
 package clinica;
 
+import clinica.strategies.impl.PagamentoComCobertura;
+
 import java.util.Arrays;
 
 public class Seeder {
@@ -8,7 +10,7 @@ public class Seeder {
 		
 	}
 	
-	public void seed() {
+	public static void seed() {
 		BancoDeDados db = BancoDeDados.getInstance();
 		
 		// Cria as tabelas
